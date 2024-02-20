@@ -5,20 +5,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <button>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href={`https://accounts.google.com/o/oauth2/auth?client_id=${`448940645981-3kp181mdmltl6bfltpvvso2v1vlt8h6e.apps.googleusercontent.com`}&redirect_uri=http://localhost:3000/auth/google&scope=https://www.googleapis.com/auth/youtube&response_type=token`}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
         >
-          Learn React
+          google login
         </a>
-      </header>
+      </button>
     </div>
   );
 }
