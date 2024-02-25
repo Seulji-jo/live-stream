@@ -2,10 +2,17 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { io } from 'socket.io-client';
 
 function App() {
   const [count, setCount] = useState(0);
+  const socket = io();
+  console.log(socket);
 
+  const handleButton = () => {
+    setCount((count) => count + 1);
+  };
+  socket.on('connection', () => console.log('connection server'));
   return (
     <>
       <div>
@@ -18,9 +25,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={handleButton}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
