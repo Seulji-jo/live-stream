@@ -3,9 +3,9 @@ import { socket } from '../socket';
 export function ConnectionManager() {
   function connect() {
     console.log('try to connect...');
+    socket.connect();
     console.log(socket);
 
-    socket.connect();
     console.log('Connected');
   }
 
