@@ -16,6 +16,10 @@ const io = new Server(httpServer, {
 io.on("connection", (socket) => {
   console.log(socket);
   console.log("connect client by Socket.io");
+  socket.on("create-something", (value, done) => {
+    socket.emit("foo", value);
+    done();
+  });
 });
 
 httpServer.listen(3000, handleListen);
