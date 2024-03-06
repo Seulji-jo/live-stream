@@ -14,11 +14,21 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket);
   console.log("connect client by Socket.io");
-  socket.on("create-something", (value, done) => {
-    socket.emit("foo", value);
+  socket.on("join_room", (roomName, done) => {
+    socket.join(roomName);
+    console.log(socket.rooms);
+    socket.emit("create_room", roomName);
     done();
+  });
+  socket.on("offer", (offer, roomName) => {
+    socket.to(roomName).emit("offer", offer);
+  });
+  socket.on("answer", (answer, roomName) => {
+    socket.to(roomName).emit("answer", answer);
+  });
+  socket.on("ice", (ice, roomName) => {
+    socket.to(roomName).emit("ice", ice);
   });
 });
 
