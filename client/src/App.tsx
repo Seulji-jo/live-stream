@@ -9,8 +9,8 @@ function App() {
     { path: '/', element: <RoomList /> },
     {
       path: 'room',
-      // element: <Room />,
-      element: <ChatRoom />,
+      element: <Room />,
+      // element: <ChatRoom />,
     },
   ]);
   return (
