@@ -1,21 +1,29 @@
 import { ButtonHTMLAttributes, FormEvent, MouseEvent, useState } from 'react';
 import { socket } from '../utils/socket';
 import { useNavigate } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { stream } from '../store';
 
 export function MyForm() {
   const navigate = useNavigate();
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  function onSubmit(event: FormEvent) {
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
-
-    socket.timeout(5000).emit('join_room', value, () => {
-      setIsLoading(false);
+    try {
+      // await getMedia();
+      // makeConnection();
       navigate({ pathname: '/room', search: `?room=${value}` });
-    });
-  }
+      // socket.timeout(5000).emit('join_room', value, () => {
+      //   setIsLoading(false);
+      //   navigate({ pathname: '/room', search: `?room=${value}` });
+      // });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-2">

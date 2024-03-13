@@ -7,11 +7,11 @@ console.log(process.env.SOCKET_URL);
 console.log(URL);
 
 export const socket = io(URL, {
-  autoConnect: false,
-  auth: {
-    token: '123',
-  },
-  query: {
-    'my-key': 'my-value',
-  },
+  // autoConnect: false,
+  // auth: {
+  //   token: '123',
+  // },
+  // query: {
+  //   'my-key': 'my-value',
+  // },
 });

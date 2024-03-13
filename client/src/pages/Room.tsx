@@ -179,7 +179,7 @@ function Room() {
   return (
     <main>
       <div className="myStream">
-        <video ref={myCamRef}></video>
+        <video ref={myCamRef} playsInline autoPlay muted></video>
         <button onClick={handleMuteClick}>{isMuted ? 'Unmute' : 'Mute'}</button>
         <button onClick={handleCameraClick}>
           Camera {isCamOn ? 'Off' : 'On'}
@@ -195,7 +195,7 @@ function Room() {
           ))}
         </select>
       </div>
-      <video ref={peerCamRef}></video>
+      <video ref={peerCamRef} playsInline autoPlay muted></video>
     </main>
   );
 }
